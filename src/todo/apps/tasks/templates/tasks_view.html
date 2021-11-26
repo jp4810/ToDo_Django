@@ -8,13 +8,16 @@
 {% for task in tasks_list %}
     <tr>
         <td>
-            {{task.state}}
+            <input type="checkbox" id="state"+{{task.id}} value={{task.id}} onclick="location.href='{% url 'change_task' task_id=task.id %}'" {% if task.state %}checked{% endif %}>
         </td>  
         <td>
-            {{ task.title }}
+            {% if task.state%} <s> {{ task.title }} </s>
+            {% else %} {{ task.title }}
+            {% endif %}
         </td>
     </tr>
 {% empty %}
     No tasks to do. Add your first task!
 {% endfor %}
 </table>
+<d>{{test_data}}</d>

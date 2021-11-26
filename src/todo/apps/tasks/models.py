@@ -10,5 +10,5 @@ class Tasks(models.Model):
         null=False,
         default=False
     )
-    created_at = models.DateTimeField(auto_now=True)
-    update_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
