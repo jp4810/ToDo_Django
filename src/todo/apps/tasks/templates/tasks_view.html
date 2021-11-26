@@ -1,0 +1,20 @@
+<h1>Tasks</h1>
+
+<table>
+    <tr>
+        <th>State</th>
+        <th>Title</th>
+    </tr>
+{% for task in tasks_list %}
+    <tr>
+        <td>
+            {{task.state}}
+        </td>  
+        <td>
+            {{ task.title }}
+        </td>
+    </tr>
+{% empty %}
+    No tasks to do. Add your first task!
+{% endfor %}
+</table>
