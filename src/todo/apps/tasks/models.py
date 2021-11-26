@@ -11,6 +11,7 @@ class Tasks(models.Model):
         default=False
     )
     description = models.TextField(
+        null=True,
         default=""
     )
     updated_at = models.DateTimeField(auto_now=True)

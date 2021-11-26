@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<head>
+    <title>To do list</title>
+</head>
+
 <h1>Tasks</h1>
 
 <table>
@@ -24,4 +28,9 @@
 {% empty %}
     No tasks to do. Add your first task!
 {% endfor %}
+    <tr>
+        <td>
+            <button class="material-icons" onclick="location.href='{% url 'new_task' %}'">plus_one</button>
+        </td>
+    </tr>
 </table>

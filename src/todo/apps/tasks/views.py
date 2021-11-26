@@ -1,7 +1,8 @@
 from django.db.models import query
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView
 from django.shortcuts import redirect
 from apps.tasks.models import Tasks
+from apps.tasks.forms import TaskForm
 
 class TasksView(ListView):
     model = Tasks
@@ -31,6 +32,30 @@ class TaskDetailView(ListView):
             'task_details': task_details
         }
         return context
+
+class AddTaskView(FormView):
+    model=Tasks
+    form = TaskForm
+    template_name = "add_task_view.html"
+
+    def get_context_data(self):
+        last_task_id = Tasks.objects.raw(
+            """
+            SELECT id
+            FROM tasks
+            ORDER BY id DESC
+            LIMIT 1
+            """
+        )[0].id
+        context={
+            'new_id': last_task_id+1,
+            'form': self.form
+        }
+        return context
+    
+    def post(self, request):
+        Tasks.objects.get_or_create(title=request.POST.dict()['title'], description=request.POST.dict()['description'])
+        return redirect('tasks_view')
 
 class ChangeTaskState():
     def save(request, **kwargs):
