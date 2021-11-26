@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<h1>Task {{task_details.title}} details</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>State</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Creation</th>
+        <th>Modification</th>
+    </tr>
+    <tr>
+        <td>
+            {{ task_details.id }}
+        </td>
+        <td>
+            <input type="checkbox" id="state"+{{task_details.id}} value={{task_details.id}} onclick="location.href='{% url 'change_task' task_id=task_details.id %}'" {% if task_details.state %}checked{% endif %}>
+        </td>  
+        <td>
+            {{ task_details.title }}
+        </td>
+        <td>
+            {{ task_details.description }}
+        </td>
+        <td>
+            {{ task_details.created_at }}
+        </td>
+        <td>
+            {{ task_details.updated_at }}
+        </td>
+    </tr>
+</table>
+
+<button class="material-icons" onclick="location.href='{% url 'tasks_view' %}'">navigate_before</button>

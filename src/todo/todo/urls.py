@@ -19,5 +19,6 @@ from apps.tasks import views
 
 urlpatterns = [
     path('', views.TasksView.as_view(), name='tasks_view'),
-    path('change_task/(?P<task_id>[0-9]+)', views.ChangeTaskState.save, name='change_task')
+    path('change_task/(?P<task_id>[0-9]+)', views.ChangeTaskState.save, name='change_task'),
+    path('task_detail/<int:task_id>', views.TaskDetailView.as_view(), name='task_detail'),
 ]

@@ -10,5 +10,8 @@ class Tasks(models.Model):
         null=False,
         default=False
     )
+    description = models.TextField(
+        default=""
+    )
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)

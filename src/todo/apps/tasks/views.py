@@ -20,6 +20,18 @@ class TasksView(ListView):
         }
         return context
     
+class TaskDetailView(ListView):
+    model = Tasks
+    template_name = "task_detail_view.html"
+
+    def get_context_data(self):
+        task_id = self.request.get_full_path().split('/')[-1]
+        task_details = Tasks.objects.filter(id=task_id).first()
+        context={
+            'task_details': task_details
+        }
+        return context
+
 class ChangeTaskState():
     def save(request, **kwargs):
         if 'task_id' in kwargs.keys():

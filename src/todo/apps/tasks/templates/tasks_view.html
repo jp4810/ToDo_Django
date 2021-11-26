@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <h1>Tasks</h1>
 
 <table>
@@ -15,9 +17,11 @@
             {% else %} {{ task.title }}
             {% endif %}
         </td>
+        <td>
+            <button class="material-icons" onclick="location.href='{% url 'task_detail' task_id=task.id %}'">navigate_next</button>
+        </td>
     </tr>
 {% empty %}
     No tasks to do. Add your first task!
 {% endfor %}
 </table>
-<d>{{test_data}}</d>
