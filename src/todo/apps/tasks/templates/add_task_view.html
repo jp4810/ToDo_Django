@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 <head>
     <title>Add new task</title>
 </head>
@@ -7,5 +11,12 @@
         {% csrf_token %}
         {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit">
+    <table>
+        <tr>
+            <button class="material-icons" onclick="location.href='{% url 'tasks_view' %}'">navigate_before</button>
+        </tr>
+        <tr>
+            <button class="material-icons" type="submit" value="Submit">done</button>
+        </tr>
+    </table>
 </form>

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <h1>Task {{task_details.title}} details</h1>
 
@@ -10,6 +11,7 @@
         <th>Description</th>
         <th>Creation</th>
         <th>Modification</th>
+        <th>Delete</th>
     </tr>
     <tr>
         <td>
@@ -29,6 +31,9 @@
         </td>
         <td>
             {{ task_details.updated_at }}
+        </td>
+        <td>
+            <button class="material-icons" onclick="location.href='{% url 'delete_task' task_id=task_details.id %}'" method="DELETE">delete_outline</button>
         </td>
     </tr>
 </table>

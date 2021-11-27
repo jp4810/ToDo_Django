@@ -57,13 +57,21 @@ class AddTaskView(FormView):
         Tasks.objects.get_or_create(title=request.POST.dict()['title'], description=request.POST.dict()['description'])
         return redirect('tasks_view')
 
-class ChangeTaskState():
+class ChangeTask():
     def save(request, **kwargs):
         if 'task_id' in kwargs.keys():
             try:
                 mod_task = Tasks.objects.filter(id=kwargs['task_id']).first()
                 mod_task.state = not mod_task.state
                 mod_task.save()
+            except:
+                pass
+        return redirect('tasks_view')
+    def delete(request, **kwargs):
+        if 'task_id' in kwargs.keys():
+            try:
+                mod_task = Tasks.objects.filter(id=kwargs['task_id']).first()
+                mod_task.delete()
             except:
                 pass
         return redirect('tasks_view')
